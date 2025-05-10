@@ -1,0 +1,49 @@
+-- Categories Table
+CREATE TABLE categories (
+    category_id INT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
+
+-- Suppliers Table
+CREATE TABLE suppliers (
+    supplier_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    contact_email VARCHAR(100)
+);
+
+-- Products Table
+CREATE TABLE products (
+    product_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    category_id INT,
+    supplier_id INT,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (category_id) REFERENCES categories(category_id),
+    FOREIGN KEY (supplier_id) REFERENCES suppliers(supplier_id)
+);
+
+-- Inventory Table
+CREATE TABLE inventory (
+    product_id INT PRIMARY KEY,
+    quantity_in_stock INT,
+    last_updated DATE,
+    FOREIGN KEY (product_id) REFERENCES products(product_id)
+);
+
+-- Customers Table
+CREATE TABLE customers (
+    customer_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+);
+
+-- Sales Table
+CREATE TABLE sales (
+    sale_id INT PRIMARY KEY,
+    product_id INT,
+    customer_id INT,
+    quantity_sold INT,
+    sale_date DATE,
+    FOREIGN KEY (product_id) REFERENCES products(product_id),
+    FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);

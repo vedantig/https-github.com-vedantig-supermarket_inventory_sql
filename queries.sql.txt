@@ -1,0 +1,30 @@
+-- 1. List all products with their category and supplier
+SELECT p.product_id, p.name AS product_name, c.name AS category, s.name AS supplier, p.price
+FROM products p
+JOIN categories c ON p.category_id = c.category_id
+JOIN suppliers s ON p.supplier_id = s.supplier_id;
+
+-- 2. Check inventory status
+SELECT p.name, i.quantity_in_stock, i.last_updated
+FROM inventory i
+JOIN products p ON i.product_id = p.product_id
+ORDER BY i.quantity_in_stock ASC;
+
+-- 3. Total sales per product
+SELECT p.name, SUM(s.quantity_sold) AS total_units_sold
+FROM sales s
+JOIN products p ON s.product_id = p.product_id
+GROUP BY p.name;
+
+-- 4. Products with low stock (less than 100 units)
+SELECT p.name, i.quantity_in_stock
+FROM inventory i
+JOIN products p ON i.product_id = p.product_id
+WHERE i.quantity_in_stock < 100;
+
+-- 5. Customer purchase history
+SELECT c.name AS customer_name, p.name AS product_bought, s.quantity_sold, s.sale_date
+FROM sales s
+JOIN customers c ON s.customer_id = c.customer_id
+JOIN products p ON s.product_id = p.product_id
+ORDER BY s.sale_date DESC;

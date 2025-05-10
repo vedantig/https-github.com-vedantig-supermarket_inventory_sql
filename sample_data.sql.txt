@@ -1,0 +1,32 @@
+-- Insert into categories
+INSERT INTO categories VALUES
+(1, 'Beverages'),
+(2, 'Snacks'),
+(3, 'Household');
+
+-- Insert into suppliers
+INSERT INTO suppliers VALUES
+(1, 'ABC Distributors', 'contact@abc.com'),
+(2, 'FreshFarms Ltd.', 'sales@freshfarms.com');
+
+-- Insert into products
+INSERT INTO products VALUES
+(101, 'Coca Cola 1L', 1, 1, 40.00),
+(102, 'Lays Chips', 2, 1, 20.00),
+(103, 'Detergent Powder', 3, 2, 75.00);
+
+-- Insert into inventory
+INSERT INTO inventory VALUES
+(101, 150, '2025-05-01'),
+(102, 80, '2025-05-01'),
+(103, 200, '2025-05-01');
+
+-- Insert into customers
+INSERT INTO customers VALUES
+(1, 'John Doe', 'john@example.com'),
+(2, 'Jane Smith', 'jane@example.com');
+
+-- Insert into sales
+INSERT INTO sales VALUES
+(1, 101, 1, 2, '2025-05-09'),
+(2, 103, 2, 1, '2025-05-09');
